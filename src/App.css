@@ -1,11 +1,10 @@
 .expensebtn{
   margin: 1em;
-  float: right;
 }
 h1{
   text-align: center;
 }
 .table{
-  border: 1px solid rgba(128, 128, 128, 0.247);
+  border: 1px solid rgba(0, 0, 0, 0.247);
   padding: 1em;
 }

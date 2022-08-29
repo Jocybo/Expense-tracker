@@ -1,13 +1,13 @@
 import "./App.css";
 import React from "react";
-import ExpenseTable from "./ExpenseTable";
+import ExpenseModal from "./ExpenseModal";
 
 function App() {
   return (
-    <>
+    <div>
       <h1>Expence Tracker</h1>
-      <ExpenseTable />
-    </>
+        <ExpenseModal />
+    </div>
   );
 }
 
