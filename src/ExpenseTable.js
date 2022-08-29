@@ -4,6 +4,16 @@ import "antd/dist/antd.css";
 import ExpenseModal from "./ExpenseModal";
 
 const ExpenseTable = () => {
+  const getData = (d) => {
+    let user = {
+      category: "Travel",
+      expensename: d.expensename,
+      amount: d.amount,
+      dateoftransaction: d.date,
+      description: d.description,
+    };
+    console.log(user);
+  };
   const data = [
     {
       key: "1",
@@ -53,11 +63,11 @@ const ExpenseTable = () => {
 
   return (
     <div>
-     <div className="table">
-     <Table dataSource={data} columns={columns} pagination={false} />
-     </div>
+      <div className="table">
+        <Table dataSource={data} columns={columns} pagination={false} />
+      </div>
       <div>
-        <ExpenseModal />
+        <ExpenseModal getData={getData} />
       </div>
     </div>
   );
