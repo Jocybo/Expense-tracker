@@ -1,11 +1,12 @@
 import { Modal, Input, Button, Form, InputNumber} from "antd";
-import { EditOutlined,DeleteOutlined } from '@ant-design/icons';
 import React, { useState } from "react";
 import { Table } from "antd";
 import "antd/dist/antd.css";
 
 const ExpenseTable = () => {
+
   const [form] = Form.useForm();
+
   const [userData,setuserData] = useState([]);
 
   const onFinish = (values) => {
@@ -13,7 +14,6 @@ const ExpenseTable = () => {
     setIsModalVisible(false);
     form.resetFields();
   };  
-
   const layout = { labelCol: { span: 8 }, wrapperCol: { span: 16 } };
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -24,6 +24,9 @@ const ExpenseTable = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
+ 
+
   const columns = [
     {
       title: "Category",
@@ -49,15 +52,6 @@ const ExpenseTable = () => {
       title: "Description",
       dataIndex: "description",
       key: "description",
-    },
-    {
-      title: "Actions",
-      render:()=>{
-        return <>
-          <EditOutlined style={{color:"blue"}}/>
-          <DeleteOutlined style={{color:"red",marginLeft: 20}}/>
-        </>
-      }
     }
   ];
 
@@ -71,7 +65,7 @@ const ExpenseTable = () => {
         <div>
           <Modal title="Add Expense" visible={isModalVisible} footer={null} onCancel={handleCancel}>
             
-            <Form {...layout} name="nest-messages" onFinish={onFinish}>
+            <Form {...layout} name="nest-messages" onFinish={onFinish} form={form} >
 
                 <Form.Item name={["category"]} label="Category" className="category" > 
                   <Input />
@@ -86,7 +80,7 @@ const ExpenseTable = () => {
                 </Form.Item>
 
                 <Form.Item name={["dateoftransaction"]} label="Date of Transaction">
-                  <input type={"date"} />
+                  <input type={"date"}/>
                 </Form.Item>
 
                 <Form.Item name={["description"]} label="Description">
@@ -94,21 +88,20 @@ const ExpenseTable = () => {
                 </Form.Item>
 
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-
                   <Button type="primary" htmlType="submit">
                     Submit
                   </Button>
-
                 </Form.Item>
             </Form>
-         
+  
           </Modal>
         </div>
         <div className="table">
-          <Table dataSource={userData} columns={columns} pagination={false} /> 
-        </div>
+          <Table  dataSource={userData} columns={columns} pagination={false}  bordered /> 
+        </div> 
     </div>
   );
 };
 
 export default ExpenseTable;
+
